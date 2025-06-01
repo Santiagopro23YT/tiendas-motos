@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina Aceites</title>
+    <link rel="stylesheet" type="text/css" href="../bootstrap-5.3.3-dist/css/bootstrap.css">
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../inicio/style.css">
+    <style>
+        /* Estilos para asegurar que todas las tarjetas tengan el mismo tamaño */
+        .card {
+            height: 450px;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .card-image {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .card-image img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            object-position: center;
+        }
+        /* Estilos para los carruseles */
+        .carousel.carousel-slider {
+            height: 200px !important;
+            width: 100% !important;
+        }
+        .carousel-item {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            height: 100% !important;
+        }
+        .card-content {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            padding: 20px !important;
+        }
+        .card-content p {
+            flex-grow: 1;
+            margin-top: 10px !important;
+            margin-bottom: 10px !important;
+        }
+        .card-action {
+            margin-top: auto;
+            padding: 16px !important;
+        }
+        /* Corregir los títulos de las tarjetas para evitar superposición */
+        .card-title {
+            height: auto !important;
+            min-height: 40px;
+            display: block !important;
+            font-size: 20px !important;
+            line-height: 1.2 !important;
+            margin-bottom: 10px !important;
+        }
+        /* Asegurar que el precio tenga espacio adecuado */
+        .blue-text {
+            margin-top: 5px !important;
+            margin-bottom: 0 !important;
+        }
+    </style>
+</head>
+<body>
+    <img src="../img/banner.png" class="img-fluid" alt="Espera esta cargando la pagina">
+
+    <!--Inicio barra de navegación-->
+<nav class="navbar navbar-expand-lg bg-dark-300" data-bs-theme="dark " style="background-color: #857878; color: #def1f1;" >
+  <div class="container-fluid">
+    <a class="navbar-brand" href="https://maps.app.goo.gl/JC5zB2sUWU6AbodTA" >ShopMotoBikes</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
+        </li>
+       
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Servicios
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="../repuestos/repuestos.html" >Repuestos</a></li>
+            <li><a class="dropdown-item" href="../aceites/aceites.html" >Aceites</a></li>
+                        
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../contacto/contacto.html" >Contacto</a>
+        </li>
+
+        <li>
+          <a class="nav-link" href="../pedido/pedido.html">Pedidos</a>
+        </li>
+        
+      </ul>
+      
+    </div>
+  </div>
+</nav>
+
+<!--Fin barra de navegación-->
+<br><br>
+<!--Incio contenido pagina-->
+    <div class="container">   
+        <div class="row">
+            <!-- Tarjeta 1 con carrusel de Materialize -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- Carrusel para la primera tarjeta -->
+                        <div class="carousel carousel-slider" style="height: 200px;">
+                            <a class="carousel-item" href="#one!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_937516-MCO79306896009_092024-O.webp" alt="Cadena de Transmisión 1" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#two!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_2X_657774-MCO79306836773_092024-F.webp" alt="Cadena de Transmisión 2" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#three!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_633528-MCO79306631387_092024-O.webp" alt="Cadena de Transmisión 3" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#four!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_749261-MCO52662252416_112022-O.webp" alt="Cadena de Transmisión 4" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p>Aceite Yamalube 10w40 4t Semi-sintético Alto Desempeño</p>
+                        <p class="blue-text"><strong>Precio: 60.245 COP</strong></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://articulo.mercadolibre.com.co/MCO-1102142064-aceite-yamalube-10w40-4t-semi-sintetico-alto-desempeno-_JM#is_advertising=true&position=1&search_layout=stack&type=pad&tracking_id=24b1544e-efd8-4a47-bb6d-e8ae7a33d15e&is_advertising=true&ad_domain=VQCATCORE_LST&ad_position=1&ad_click_id=YzgxOTZlYTUtZGQ3OC00OGU2LTkwYTUtNGMxYzkwNDQ3MzJk" target="_blank" class="blue-text">Comprar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjeta 2 con carrusel de Materialize -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- Carrusel para la segunda tarjeta -->
+                        <div class="carousel carousel-slider" style="height: 200px;">
+                            <a class="carousel-item" href="#one!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_742923-MLA77324162819_062024-O.webp" alt="Cadena de Transmisión 1" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#two!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_880250-MLA77324346381_062024-O.webp" alt="Cadena de Transmisión 2" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#three!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_760111-MLA77324152737_062024-O.webp" alt="Cadena de Transmisión 3" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#four!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_836173-MLA77324346405_062024-O.webp" alt="Cadena de Transmisión 4" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p>Lubricante Ipone Katana 100% Sintetico 10w40 1litro Jaso Ma2 Api Sn</p>
+                        <p class="blue-text"><strong>Precio: 60.000 COP</strong></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://www.mercadolibre.com.co/lubricante-ipone-katana-100-sintetico-10w40-1litro-jaso-ma2-api-sn/p/MCO24464850?highlight=true&headerTopBrand=true#polycard_client=search-nordic&searchVariation=MCO24464850&position=5&search_layout=stack&type=product&tracking_id=81097666-d37d-4c2c-93d2-c27c1d735d36&wid=MCO1491265605&sid=search" target="_blank" class="blue-text">Comprar</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3 con carrusel de Materialize -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- Carrusel para la tercera tarjeta -->
+                        <div class="carousel carousel-slider" style="height: 200px;">
+                            <a class="carousel-item" href="#one!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_792733-MCO78660643138_092024-O.webp" alt="Cadena de Transmisión 1" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#two!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_979320-MCO75920397845_042024-O.webp" alt="Cadena de Transmisión 2" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#three!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_942109-MCO75920397839_042024-O.webp" alt="Cadena de Transmisión 3" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#four!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_759098-MCO78038501435_072024-O.webp" alt="Cadena de Transmisión 4" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p>Aceite Kixx Moto 4t 20w50 Full Sintetico X 2 Lt</p>
+                        <p class="blue-text"><strong>Precio: 68.400 COP</strong></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://articulo.mercadolibre.com.co/MCO-1778253738-aceite-kixx-moto-4t-20w50-full-sintetico-x-2-lt-_JM#is_advertising=true&backend_model=search-backend&position=8&search_layout=stack&type=pad&tracking_id=c13fbb2a-5a61-49dc-b4f7-0ea8b750fed3&is_advertising=true&ad_domain=VQCATCORE_LST&ad_position=8&ad_click_id=MWNjZDk0MTItOGU2Zi00YTFjLWJhZDQtOWQ3NzdjMmZkNjAx" target="_blank" class="blue-text">Comprar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjeta 4 con carrusel de Materialize -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- Carrusel para la cuarta tarjeta -->
+                        <div class="carousel carousel-slider" style="height: 200px;">
+                            <a class="carousel-item" href="#one!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_866295-MLA80125285730_112024-O.webp" alt="Cadena de Transmisión 1" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#two!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_932583-MLA77382823626_072024-O.webp" alt="Cadena de Transmisión 2" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#three!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_982127-MLU75783794640_042024-O.webp" alt="Cadena de Transmisión 3" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#four!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_971231-MLU75953877231_042024-O.webp" alt="Cadena de Transmisión 4" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p>Motul 5000 20W-50 1L</p>
+                        <p class="blue-text"><strong>Precio: 32.000 COP</strong></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://www.mercadolibre.com.co/motul-5000-20w-50-1l/p/MCO21357037?highlight=true&headerTopBrand=true#polycard_client=search-nordic&searchVariation=MCO21357037&position=19&search_layout=stack&type=product&tracking_id=e47f2d3b-59c9-4dd8-9d7f-af0bb7ca869c&wid=MCO1499771701&sid=search" target="_blank" class="blue-text">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Segunda fila de tarjetas con estilo de Materialize -->
+        <div class="row">
+            <!-- Tarjeta 1 con carrusel de Materialize -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- Carrusel para la primera tarjeta de la segunda fila -->
+                        <div class="carousel carousel-slider" style="height: 200px;">
+                            <a class="carousel-item" href="#one!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_911690-MLU69862244472_062023-O.webp" alt="Bujía 1" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#two!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_601772-MLA77595802349_072024-O.webp" alt="Bujía 2" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#three!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_601772-MLA77595802349_072024-O.webp" alt="Bujía 3" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#four!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_860730-MLU69862244474_062023-O.webp" alt="Bujía 4" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p>Aceite Liqui Moly 10w40 Antifriccion Molygen X 4l</p>
+                        <p class="blue-text"><strong>Precio: 255.000 COP</strong></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://www.mercadolibre.com.co/aceite-liqui-moly-10w40-antifriccion-molygen-x-4l/p/MCO23879209?highlight=true&headerTopBrand=false#polycard_client=search-nordic&searchVariation=MCO23879209&position=38&search_layout=stack&type=product&tracking_id=6ecfc8c5-140f-4c38-8c7d-f7393e2890c1&wid=MCO2084826520&sid=search" target="_blank" class="blue-text">Comprar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjeta 2 con carrusel de Materialize -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- Carrusel para la segunda tarjeta de la segunda fila -->
+                        <div class="carousel carousel-slider" style="height: 200px;">
+                            <a class="carousel-item" href="#one!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_618545-MLU69651106728_052023-O.webp" alt="Embrague 1" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#two!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_650985-MLU69651106730_052023-O.webp" alt="Embrague 2" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#three!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_622214-MLA80038075097_102024-O.webp" alt="Embrague 3" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#four!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_955368-MLA80037910043_102024-O.webp" alt="Embrague 4" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p>Aceite Sintetico 10w40 Auto Camioneta 4l Liqui Moly</p>
+                        <p class="blue-text"><strong>Precio: 258.000 COP</strong></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://www.mercadolibre.com.co/aceite-sintetico-10w40-auto-camioneta-4l-liqui-moly/p/MCO23502389#polycard_client=recommendations_pdp-v2p&reco_backend=ranker_retrieval_system_org&reco_model=rk_ent_v3_retsys_org&reco_client=pdp-v2p&reco_item_pos=1&reco_backend_type=low_level&reco_id=30938bbf-48f3-49c5-b4c2-7991f72b61ac&wid=MCO2084826610&sid=recos" target="_blank" class="blue-text">Comprar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjeta 3 con carrusel de Materialize -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- Carrusel para la tercera tarjeta de la segunda fila -->
+                        <div class="carousel carousel-slider" style="height: 200px;">
+                            <a class="carousel-item" href="#one!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_930328-MCO83591253939_042025-O.webp" alt="Amortiguador 1" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#two!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_654590-MCO83591752835_042025-O.webp" alt="Amortiguador 2" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#three!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_730300-MCO83592265047_042025-O.webp" alt="Amortiguador 3" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#four!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_986231-MCO70745795132_072023-O.webp" alt="Amortiguador 4" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p>Valvoline 20w50 / Semi-sintético / Galon + Cuarto (4,72l)</p>
+                        <p class="blue-text"><strong>Precio: 136.900 COP</strong></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://articulo.mercadolibre.com.co/MCO-1751899422-valvoline-20w50-semi-sintetico-galon-cuarto-472l-_JM#polycard_client=recommendations_vip-v2p&reco_backend=ranker_retrieval_system_org&reco_model=rk_ent_v3_retsys_org&reco_client=vip-v2p&reco_item_pos=0&reco_backend_type=low_level&reco_id=7c6bdf0a-b6ba-4091-94c5-423f0e219598&wid=MCO1751899422&sid=recos" target="_blank" class="blue-text">Comprar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjeta 4 con carrusel de Materialize -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- Carrusel para la cuarta tarjeta de la segunda fila -->
+                        <div class="carousel carousel-slider" style="height: 200px;">
+                            <a class="carousel-item" href="#one!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_790682-MCO83500064421_042025-O.webp" alt="Batería 1" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#two!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_783697-MCO71732234692_092023-O.webp" alt="Batería 2" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#three!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_698378-MLA50077731261_052022-O.webp" alt="Batería 3" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#four!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_725006-MCO41212883615_032020-O.webp" alt="Batería 4" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p>Motul 7100 20w50 Aceite 100% Sintetico Original 1l</p>
+                        <p class="blue-text"><strong>Precio: 61.595 COP</strong></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://articulo.mercadolibre.com.co/MCO-597579351-motul-7100-20w50-aceite-100-sintetico-original-1l-_JM?highlight=false&headerTopBrand=false#polycard_client=search-nordic&position=13&search_layout=stack&type=item&tracking_id=0a0bd32c-0f41-420a-9600-8e60605fed9d&wid=MCO597579351&sid=search" target="_blank" class="blue-text">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tercera fila de tarjetas con estilo de Materialize -->
+        <div class="row">
+            <!-- Tarjeta 1 de la tercera fila -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- Carrusel para la primera tarjeta de la tercera fila -->
+                        <div class="carousel carousel-slider" style="height: 200px;">
+                            <a class="carousel-item" href="#one!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_631485-MCO52269939783_112022-O.webp" alt="Batería 1" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#two!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_737112-MLA74650697826_022024-O.webp" alt="Batería 2" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#three!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_955185-MCO52269877891_112022-O.webp" alt="Batería 3" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#four!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_947824-MCO52269979603_112022-O.webp" alt="Batería 4" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <p>Aceite Para Motor Motul Semi-sintético 5100 15w-50 4t X 1l</p>
+                        <p class="blue-text"><strong>Precio: 63.242 COP</strong></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://articulo.mercadolibre.com.co/MCO-1037204257-aceite-para-motor-motul-semi-sintetico-5100-15w-50-4t-x-1l-_JM#polycard_client=recommendations_vip-v2p&reco_backend=ranker_retrieval_system_org&reco_model=rk_ent_v3_retsys_org&reco_client=vip-v2p&reco_item_pos=2&reco_backend_type=low_level&reco_id=55166955-be3e-46ad-b76f-8243f317d5b6&wid=MCO1037204257&sid=recos" target="_blank" class="blue-text">Comprar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjeta 2 de la tercera fila -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- Carrusel para la segunda tarjeta de la tercera fila -->
+                        <div class="carousel carousel-slider" style="height: 200px;">
+                            <a class="carousel-item" href="#one!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_644620-MCO52253823235_112022-O.webp" alt="Batería 1" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#two!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_851840-MCO52253827180_112022-O.webp" alt="Batería 2" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#three!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_947560-MCO52253854002_112022-O.webp" alt="Batería 3" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#four!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_660542-MCO52253830217_112022-O.webp" alt="Batería 4" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-content">   
+                        <p>Aceite Para Motor Motul Semi-sintético 5100 15w-50 4t X 1l</p>
+                        <p class="blue-text"><strong>Precio: 44.855 COP</strong></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://articulo.mercadolibre.com.co/MCO-1036044202-aceite-para-motor-motul-semi-sintetico-5100-15w-50-4t-x-1l-_JM#polycard_client=recommendations_vip-v2p&reco_backend=ranker_retrieval_system_org&reco_model=rk_ent_v3_retsys_org&reco_client=vip-v2p&reco_item_pos=1&reco_backend_type=low_level&reco_id=24ce27dc-c372-4129-b31d-cf7c98f88ab7&wid=MCO1036044202&sid=recos" target="_blank" class="blue-text">Comprar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjeta 3 de la tercera fila -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- Carrusel para la tercera tarjeta de la tercera fila -->
+                        <div class="carousel carousel-slider" style="height: 200px;">
+                            <a class="carousel-item" href="#one!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_884771-MCO82921446887_032025-O.webp" alt="Batería 1" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#two!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_900449-MCO82921505801_032025-O.webp" alt="Batería 2" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#three!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_776732-MCO82634687086_032025-O.webp" alt="Batería 3" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#four!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_900449-MCO82921505801_032025-O.webp" alt="Batería 4" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        
+                        <p>Aceite Hero 4 Tiempos 10w 30 1200 Mil Original</p>
+                        <p class="blue-text"><strong>Precio: 49.000 COP</strong></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://articulo.mercadolibre.com.co/MCO-1551980653-aceite-hero-4-tiempos-10w-30-1200-mil-original-_JM?highlight=false&headerTopBrand=false#polycard_client=search-nordic&position=29&search_layout=stack&type=item&tracking_id=d448b759-a952-478b-a946-640b4ddc1224&wid=MCO1551980653&sid=search" target="_blank" class="blue-text">Comprar</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjeta 4 de la tercera fila -->
+            <div class="col s12 m3">
+                <div class="card">
+                    <div class="card-image">
+                        <!-- Carrusel para la cuarta tarjeta de la tercera fila -->
+                        <div class="carousel carousel-slider" style="height: 200px;">
+                            <a class="carousel-item" href="#one!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_893729-MCO83105952067_032025-O.webp" alt="Kit Carburador 1" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#two!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_668217-MCO82818016826_032025-O.webp" alt="Kit Carburador 2" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#three!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_967202-MCO83105913989_032025-O.webp" alt="Kit Carburador 3" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                            <a class="carousel-item" href="#four!" style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                                <img src="https://http2.mlstatic.com/D_NQ_NP_878751-MCO83105914047_032025-O.webp" alt="Kit Carburador 4" style="width: 100%; height: 200px; object-fit: contain;">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        
+                        <p>Aceite Hero 10w-30 Semi-sintético 1.2l Moto/cuatri</p>
+                        <p class="blue-text"><strong>Precio: 45.700 COP</strong></p>
+                    </div>
+                    <div class="card-action">
+                        <a href="https://articulo.mercadolibre.com.co/MCO-1322857713-aceite-hero-10w-30-semi-sintetico-12l-motocuatri-_JM#polycard_client=recommendations_vip-v2p&reco_backend=ranker_retrieval_system_org&reco_model=rk_ent_v3_retsys_org&reco_client=vip-v2p&reco_item_pos=1&reco_backend_type=low_level&reco_id=450fa138-4b56-4d0f-ae9a-c0b7a091cf67&wid=MCO1322857713&sid=recos" target="_blank" class="blue-text">Comprar</a>
+                    </div>
+                </div>
+            </div>
+    <br><br>
+  
+    
+      <!--INICIO DE FOOTER-->
+      <footer class="bg-body-tertiary text-center">
+        <!-- Grid container -->
+        <div class="container p-4 pb-0">
+          <!-- Section: Social media -->
+          <section class="mb-4">
+            <!-- Facebook -->
+            <a
+            data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #3b5998;"
+              href="https://www.facebook.com/"
+              target="_blank"
+              role="button"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16">
+                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/>
+              </svg></a>
+      
+            <!-- Twitter -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #55acee;"
+              href="https://x.com/"
+              target="_blank"
+              role="button"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/>
+              </svg></a>
+      
+            <!-- Google -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #dd4b39;"
+              href="https://www.google.com/"
+              target="_blank"
+              role="button"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-google" viewBox="0 0 16 16">
+                <path d="M15.545 6.558a9.4 9.4 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.7 7.7 0 0 1 5.352 2.082l-2.284 2.284A4.35 4.35 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.8 4.8 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.7 3.7 0 0 0 1.599-2.431H8v-3.08z"/>
+              </svg></a>
+      
+            <!-- Instagram -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #ac2bac;"
+              href="https://www.instagram.com/"
+              target="_blank"
+              role="button"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16">
+                <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/>
+              </svg></a>
+      
+            <!-- Linkedin -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #0082ca;"
+              href="https://www.linkedin.com/login/es"
+              target="_blank"
+              role="button"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-linkedin" viewBox="0 0 16 16">
+                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854zm4.943 12.248V6.169H2.542v7.225zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248S2.4 3.226 2.4 3.934c0 .694.521 1.248 1.327 1.248zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016l.016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225z"/>
+              </svg></a>
+            <!-- Github -->
+            <a
+              data-mdb-ripple-init
+              class="btn text-white btn-floating m-1"
+              style="background-color: #333333;"
+              href="https://github.com/login"
+              target="_blank"
+              role="button"
+              ><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-github" viewBox="0 0 16 16">
+                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8"/>
+              </svg></a>
+          </section>
+          <!-- Section: Social media -->
+        </div>
+        <!-- Grid container -->
+      
+        <!-- Copyright -->
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
+          © 2020 Copyright:
+          <a class="text-body" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        </div>
+        <!-- Copyright -->
+      </footer>
+      
+
+<script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.js" ></script>
+      <!-- Compiled and minified JavaScript MATERIALIZE -->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+      <!-- Inicialización de los carruseles de Materialize -->
+      <script>
+          document.addEventListener('DOMContentLoaded', function() {
+              // Inicializar todos los carruseles
+              var carousels = document.querySelectorAll('.carousel.carousel-slider');
+              var instances = M.Carousel.init(carousels, {
+                  fullWidth: false,
+                  indicators: true,
+                  duration: 200
+              });
+              
+              // Función para avanzar automáticamente los carruseles
+              function autoplay() {
+                  instances.forEach(function(instance) {
+                      instance.next();
+                  });
+                  setTimeout(autoplay, 5000);
+              }
+              
+              // Iniciar autoplay después de 5 segundos
+              setTimeout(autoplay, 5000);
+          });
+      </script>
+</body>
+</html>

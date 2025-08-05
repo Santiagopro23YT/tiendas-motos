@@ -53,6 +53,16 @@
 
 <div class="container mt-5">
     <h2 class="mb-4">Lista de Estudiantes</h2>
+    <!-- Formulario de búsqueda -->
+    <form class="row g-3 mb-3" method="GET" action="">
+        <div class="col-auto">
+            <input type="number" class="form-control" name="buscar_cod" placeholder="Buscar por Código de Estudiante" value="<?= isset($_GET['buscar_cod']) ? htmlspecialchars($_GET['buscar_cod']) : '' ?>">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-primary mb-3">Buscar</button>
+            <a href="tabla.php" class="btn btn-secondary mb-3">Mostrar Todos</a>
+        </div>
+    </form>
     <table class="table table-bordered table-striped">
         <thead class="table-dark">
             <tr>
@@ -72,27 +82,37 @@
         if ($conn->connect_error) {
             die("Conexión fallida: " . $conn->connect_error);
         }
-        $result = $conn->query("SELECT * FROM estudiantes");
-        while($row = $result->fetch_assoc()){
-            echo "<tr>";
-            echo "<td>{$row['id_estudiante']}</td>";
-            echo "<td>{$row['cod_estudiante']}</td>";
-            echo "<td>{$row['nom_estudiante']}</td>";
-            echo "<td>{$row['tel_estudiante']}</td>";
-            echo "<td>{$row['email_estudiante']}</td>";
-            echo "<td>";
-            if (!empty($row['foto_estudiante'])) {
-                echo "<img src='../{$row['foto_estudiante']}' alt='Foto' style='width:60px; height:60px; object-fit:cover;'>";
-            } else {
-                echo "Sin foto";
+        // --- CONSULTA SEGÚN BÚSQUEDA ---
+        $sql = "SELECT * FROM estudiantes";
+        if (isset($_GET['buscar_cod']) && $_GET['buscar_cod'] !== "") {
+            $cod = intval($_GET['buscar_cod']);
+            $sql .= " WHERE cod_estudiante = $cod";
+        }
+        $result = $conn->query($sql);
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()){
+                echo "<tr>";
+                echo "<td>{$row['id_estudiante']}</td>";
+                echo "<td>{$row['cod_estudiante']}</td>";
+                echo "<td>{$row['nom_estudiante']}</td>";
+                echo "<td>{$row['tel_estudiante']}</td>";
+                echo "<td>{$row['email_estudiante']}</td>";
+                echo "<td>";
+                if (!empty($row['foto_estudiante'])) {
+                    echo "<img src='../{$row['foto_estudiante']}' alt='Foto' style='width:60px; height:60px; object-fit:cover;'>";
+                } else {
+                    echo "Sin foto";
+                }
+                echo "</td>";
+                echo "<td>{$row['fecha']}</td>";
+                echo "<td>
+                        <a href='editar.php?id={$row['id_estudiante']}' class='btn btn-warning btn-sm'>Editar</a>
+                        <a href='../PHP/eliminar_estudiante.php?id={$row['id_estudiante']}' class='btn btn-danger btn-sm' onclick=\"return confirm('¿Estás seguro de eliminar este estudiante?');\">Eliminar</a>
+                      </td>";
+                echo "</tr>";
             }
-            echo "</td>";
-            echo "<td>{$row['fecha']}</td>";
-            echo "<td>
-                    <a href='editar.php?id={$row['id_estudiante']}' class='btn btn-warning btn-sm'>Editar</a>
-                    <a href='../PHP/eliminar_estudiante.php?id={$row['id_estudiante']}' class='btn btn-danger btn-sm' onclick=\"return confirm('¿Estás seguro de eliminar este estudiante?');\">Eliminar</a>
-                  </td>";
-            echo "</tr>";
+        } else {
+            echo "<tr><td colspan='8' class='text-center'>No se encontraron estudiantes.</td></tr>";
         }
         $conn->close();
         ?>
@@ -100,6 +120,7 @@
     </table>
     <a href="registro.html" class="btn btn-success">Registrar nuevo estudiante</a>
 </div>
+
 
   
 

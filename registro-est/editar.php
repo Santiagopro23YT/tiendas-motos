@@ -1,14 +1,73 @@
+<?php
+// --- CONEXIÓN BD ---
+$conn = new mysqli('localhost', "root", "", 'login');
+if ($conn->connect_error) { die("Conexión fallida: " . $conn->connect_error); }
+
+// --- OBTENER ID ---
+$id = isset($_GET['id']) ? intval($_GET['id']) : 0;
+if ($id <= 0) {
+    echo "<div class='alert alert-danger'>ID no válido.</div>";
+    exit;
+}
+
+// --- PROCESAR FORMULARIO ---
+$mensaje = "";
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nom = $_POST['nom_estudiante'];
+    $tel = $_POST['tel_estudiante'];
+    $email = $_POST['email_estudiante'];
+    $foto_actual = $_POST['foto_actual'];
+
+    // Manejar cambio de foto (si se sube nueva)
+    $foto_url = $foto_actual;
+    if (isset($_FILES['foto_estudiante']) && $_FILES['foto_estudiante']['error'] == 0) {
+        $ruta_destino = "../img/estudiantes/";
+        if (!file_exists($ruta_destino)) {
+            mkdir($ruta_destino, 0777, true);
+        }
+        $nombre_archivo = uniqid() . "_" . basename($_FILES['foto_estudiante']['name']);
+        $ruta_archivo = $ruta_destino . $nombre_archivo;
+        if (move_uploaded_file($_FILES['foto_estudiante']['tmp_name'], $ruta_archivo)) {
+            // Elimina la foto anterior si existe
+            if (!empty($foto_actual) && file_exists("../" . $foto_actual)) {
+                unlink("../" . $foto_actual);
+            }
+            $foto_url = "img/estudiantes/" . $nombre_archivo;
+        }
+    }
+
+    $sql = "UPDATE estudiantes SET nom_estudiante=?, tel_estudiante=?, email_estudiante=?, foto_estudiante=? WHERE id_estudiante=?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sissi", $nom, $tel, $email, $foto_url, $id);
+
+    if ($stmt->execute()) {
+        header("Location: tabla.php");
+        exit;
+    } else {
+        $mensaje = "<div class='alert alert-danger'>Error al actualizar: " . $conn->error . "</div>";
+    }
+}
+
+// --- OBTENER DATOS DEL ESTUDIANTE ---
+$res = $conn->query("SELECT * FROM estudiantes WHERE id_estudiante=$id");
+if (!$res || $res->num_rows == 0) {
+    echo "<div class='alert alert-danger'>Estudiante no encontrado.</div>";
+    exit;
+}
+$row = $res->fetch_assoc();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pagina Inicial</title>
-    <link rel="stylesheet" type="text/css" href="./bootstrap-5.3.3-dist/css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="./inicio/style.css">
+    <link rel="stylesheet" type="text/css" href="../bootstrap-5.3.3-dist/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../inicio/style.css">
 </head>
 <body>
-    <img src="./img/banner.png" class="img-fluid" alt="Espera esta cargando la pagina">
+    <img src="../img/banner.png" class="img-fluid" alt="Espera esta cargando la pagina">
 
     <!--Inicio barra de navegación-->
 <nav class="navbar navbar-expand-lg bg-dark-300" data-bs-theme="dark " style="background-color: #857878; color: #def1f1;" >
@@ -20,7 +79,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="./index.html">Inicio</a>
+          <a class="nav-link active" aria-current="page" href="../index.html">Inicio</a>
         </li>
        
         <li class="nav-item dropdown">
@@ -28,17 +87,17 @@
             Servicios
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="./repuestos/repuestos.html" >Repuestos</a></li>
-            <li><a class="dropdown-item" href="./aceites/aceites.html" >Aceites</a></li>
+            <li><a class="dropdown-item" href="../repuestos/repuestos.html" >Repuestos</a></li>
+            <li><a class="dropdown-item" href="../aceites/aceites.html" >Aceites</a></li>
                         
           </ul>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="./contacto/contacto.html" >Contacto</a>
+          <a class="nav-link" href="../contacto/contacto.html" >Contacto</a>
         </li>
 
         <li>
-          <a class="nav-link" href="./pedido/pedido.html">Pedidos</a>
+          <a class="nav-link" href="../pedido/pedido.html">Pedidos</a>
         </li>
         
       </ul>
@@ -47,88 +106,52 @@
   </div>
 </nav>
 
-<!-- Botón flotante de Iniciar Sesión -->
-<button
-  type="button"
-  class="btn btn-primary btn-lg rounded-circle"
-  id="btnLogin"
-  style="position: fixed; bottom: 30px; right: 30px; z-index: 999;"
-  data-bs-toggle="modal"
-  data-bs-target="#loginModal"
->
-  <img src="./img/login.png" alt="Login" style="width:50px; height:50px;">
-</button>
-
-
-<!-- Modal de inicio de sesión -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <form class="modal-content" id="loginForm" autocomplete="off">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel">Iniciar Sesión</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-      </div>
-      <div class="modal-body">
-        <div id="loginAlert" class="alert alert-danger d-none" role="alert"></div>
-        <div class="mb-3">
-          <label for="usuario" class="form-label">Correo electrónico</label>
-          <input type="email" class="form-control" id="usuario" name="usuario" placeholder="ejemplo@gmail.com" required>
-        </div>
-        <div class="mb-3">
-          <label for="contrasena" class="form-label">Contraseña</label>
-          <input type="password" class="form-control" id="contrasena" name="contrasena" required minlength="6">
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-success w-100">Entrar</button>
-      </div>
-    </form>
-  </div>
-</div>
-
 
 <!--Fin barra de navegación-->
-    <br><br>
-    
-    <!--INICIO PARRAFOS-->
-    <div class="container text-center">
-        <div class="row align-items-start">
-          <div class="col">
-            <h2 class="titulo-1">Una gama de servicios especialisados para su moto</b></h2>
-            <br>
-            <p class="parrafo-1">Ofrecemos una gama de servicios de reparación, venta de repuestos, mantenimiento preventivo y correctivo, alineación de chasis, soldadura, y pintura de motocicletas. Además ofrecemos servicios de asesoría e intermediación en la compra y venta de motocicletas.</p>
-          </div>
-          <div class="col">
-            <img src="./img/parrafo-1.png" class="img-fluid" alt="Espera esta cargando la pagina">
-          </div>
+<br><br>
+<div class="container mt-5">
+    <h2 class="mb-4">Editar Estudiante</h2>
+    <?php if($mensaje) echo $mensaje; ?>
+    <form method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label class="form-label">ID</label>
+            <input type="text" class="form-control" value="<?= $row['id_estudiante'] ?>" disabled>
         </div>
-      </div>
-      <br>
-      <div class="container text-center">
-        <div class="row align-items-start">
-          <div class="col">
-            <img src="./img/parrafo-2.png" class="img-fluid" alt="Espera esta cargando la pagina">
-          </div>
-          <div class="col">
-            <h2 class="titulo-1">El arte de la reparación de motos</b></h2>
-            <br>
-            <p class="parrafo-1">Cuando tienes una motocicleta, le das un cuidado y un mimo especiales porque no solo es tu medio de transporte, sino algo de lo que puedes enorgullecer. Por eso, a la hora de reparar algún defecto que pueda surgir en tu moto, quieres poner tu vehículo en manos expertas, para que no solo pongan solución a esa avería, sino para que la con tanto cariño como tú. Con nosotros, podrás estar seguro de que tu motocicleta lucirá espléndida, como el primer día.</p>
-          </div>
+        <div class="mb-3">
+            <label class="form-label">Código de Estudiante</label>
+            <input type="number" class="form-control" value="<?= $row['cod_estudiante'] ?>" disabled>
         </div>
-      </div>
-      <br>
-      <div class="container text-center">
-        <div class="row align-items-start">
-          <div class="col">
-            <h2 class="titulo-1">Taller mecanicos de motos en Neiva</b></h2>
-            <br>
-            <p class="parrafo-1">Desde la reparación de motores hasta la sustitución de neumáticos, si tiene dos ruedas, ¡tráenoslo a Sanferger's! Como mecánicos de motos de primer nivel en Neiva, damos servicio y reparamos todo tipo de motocicletas. Contamos con años de experiencia y te garantizamos que no habrá ningún problema que nuestro equipo no pueda resolver. Ofrecemos un servicio eficiente y asequible, e intentaremos todo lo posible para que salgas del taller montado en tu moto. Si tienes una motocicleta que necesita que le echemos un ojo experto o buscas cambiarle alguna pieza defectuosa, llámanos en el +573213114063 y te asesoraremos y ofreceremos un presupuesto personalizado.</p>
-          </div>
-          <div class="col">
-            <img src="./img/parrafo-3.png" class="img-fluid" alt="Espera esta cargando la pagina">
-          </div>
+        <div class="mb-3">
+            <label for="nom_estudiante" class="form-label">Nombre</label>
+            <input type="text" class="form-control" name="nom_estudiante" id="nom_estudiante" value="<?= htmlspecialchars($row['nom_estudiante']) ?>" required>
         </div>
-      </div>
+        <div class="mb-3">
+            <label for="tel_estudiante" class="form-label">Teléfono</label>
+            <input type="number" class="form-control" name="tel_estudiante" id="tel_estudiante" value="<?= $row['tel_estudiante'] ?>" required>
+        </div>
+        <div class="mb-3">
+            <label for="email_estudiante" class="form-label">Email</label>
+            <input type="email" class="form-control" name="email_estudiante" id="email_estudiante" value="<?= htmlspecialchars($row['email_estudiante']) ?>" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Foto actual</label><br>
+            <?php if(!empty($row['foto_estudiante'])): ?>
+                <img src="../<?= $row['foto_estudiante'] ?>" style="width:80px;height:80px;object-fit:cover;">
+            <?php else: ?>
+                Sin foto
+            <?php endif; ?>
+        </div>
+        <div class="mb-3">
+            <label for="foto_estudiante" class="form-label">Cambiar Foto (opcional)</label>
+            <input type="file" class="form-control" name="foto_estudiante" id="foto_estudiante" accept="image/*">
+            <input type="hidden" name="foto_actual" value="<?= $row['foto_estudiante'] ?>">
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+        <a href="tabla.php" class="btn btn-secondary">Cancelar</a>
+    </form>
+</div>
+
+  
 
       <!--INICIO DE FOOTER-->
       <footer class="bg-body-tertiary text-center">
@@ -220,66 +243,7 @@
       </footer>
       
 
-    <script src="./bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
-    <script>
-      document.getElementById('loginForm').addEventListener('submit', function(e){
-          e.preventDefault();
-          let email = document.getElementById('usuario').value.trim();
-          let password = document.getElementById('contrasena').value;
-      
-          // Validar email: debe ser gmail, outlook, yahoo, hotmail, etc.
-          let emailPattern = /^[a-zA-Z0-9._%+-]+@(gmail|outlook|hotmail|yahoo)\.[a-zA-Z]{2,}$/;
-          let alertDiv = document.getElementById('loginAlert');
-      
-          if(!emailPattern.test(email)){
-              alertDiv.classList.remove('d-none');
-              alertDiv.textContent = "El correo debe ser @gmail, @outlook, @hotmail, @yahoo, etc.";
-              return;
-          }
-      
-          if(password.length < 6){
-              alertDiv.classList.remove('d-none');
-              alertDiv.textContent = "La contraseña debe tener al menos 6 caracteres.";
-              return;
-          }
-      
-          alertDiv.classList.add('d-none');
-      
-          fetch('PHP/login.php', {
-              method: 'POST',
-              headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-              body: `usuario=${encodeURIComponent(email)}&contrasena=${encodeURIComponent(password)}`
-          })
-          .then(res => res.json())
-          .then(data => {
-              if(data.success){
-                  alertDiv.classList.remove('d-none', 'alert-danger');
-                  alertDiv.classList.add('alert-success');
-                  alertDiv.textContent = "¡Inicio de sesión exitoso!";
-                  setTimeout(()=>{
-                      window.location.href = "./registro-est/registro.html";
-                  }, 1000);
-              } else {
-                  alertDiv.classList.remove('d-none', 'alert-success');
-                  alertDiv.classList.add('alert-danger');
-                  alertDiv.textContent = "Usuario o contraseña incorrectos. Se limpiará la caché.";
-                  try {
-                      localStorage.clear();
-                      sessionStorage.clear();
-                      document.cookie.split(";").forEach(function(c) {
-                          document.cookie = c.trim().split("=")[0] + '=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-                      });
-                  } catch(e) {
-                      console.warn("No se pudo limpiar toda la caché:", e);
-                  }
-              }
-          })
-          .catch(err => {
-              alertDiv.classList.remove('d-none');
-              alertDiv.textContent = "Error al conectar con el servidor.";
-          });
-      });
-      </script>
+    <script src="../bootstrap-5.3.3-dist/js/bootstrap.bundle.js"></script>
 </body>
 </html>
 
